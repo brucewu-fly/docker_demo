@@ -57,3 +57,11 @@ services:
       - tomcat1
       - tomcat2
       - tomcat3
+
+  nginx:
+    image: nginx:1.14
+    ports:
+      - "80:80"
+    labels:
+      - "app=nginx"
+    restart: on-failure
