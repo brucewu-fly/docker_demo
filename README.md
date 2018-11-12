@@ -1,5 +1,10 @@
-# 使用
+# docker demo
 
+## 前提条件
+1. 安装 [docker](https://docs.docker.com/install/overview/)。
+2. 安装 [docker-compose](https://docs.docker.com/compose/install/)。
+
+## 使用方法
 ```
 ## 构建 send_request 镜像
 make docker-image
