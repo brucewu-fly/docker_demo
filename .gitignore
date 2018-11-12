@@ -1,3 +1,7 @@
 .idea/
 demo.txt
 *.pyc
+.DS_Store
+*.png
+*.ppt
+*.pptx
