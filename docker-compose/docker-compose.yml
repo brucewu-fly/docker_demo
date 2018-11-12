@@ -1,0 +1,59 @@
+version: '3'
+
+services:
+  tomcat1:
+    image: tomcat:8.0
+    ports:
+      - "8088:8080"
+    labels:
+      - "app=tomcat"
+    restart: on-failure
+
+  tomcat2:
+    image: tomcat:8.0
+    ports:
+      - "8089:8080"
+    labels:
+      - "app=tomcat"
+    restart: on-failure
+
+  tomcat3:
+    image: tomcat:8.0
+    ports:
+      - "8090:8080"
+    labels:
+      - "app=tomcat"
+    restart: on-failure
+
+  send_request1:
+    image: docker_demo/send_request
+    labels:
+      - "app=send_request"
+    command: ["-e tomcat1:8080 tomcat2:8080 tomcat3:8080"]
+    restart: on-failure
+    depends_on:
+      - tomcat1
+      - tomcat2
+      - tomcat3
+
+  send_request2:
+    image: docker_demo/send_request
+    labels:
+      - "app=send_request"
+    command: ["-e tomcat1:8080 tomcat1:8080 tomcat1:8080"]
+    restart: on-failure
+    depends_on:
+      - tomcat1
+      - tomcat2
+      - tomcat3
+
+  send_request3:
+    image: docker_demo/send_request
+    labels:
+      - "app=send_request"
+    command: ["-e tomcat1:8080 tomcat2:8080 tomcat3:8080"]
+    restart: on-failure
+    depends_on:
+      - tomcat1
+      - tomcat2
+      - tomcat3

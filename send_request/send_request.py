@@ -1,17 +1,13 @@
 #!/home/tops/bin/python
 # -*- coding:utf-8 -*-
 
-import urllib2
-import time
+import argparse
 import random
+import time
+import urllib2
 
 
-def send_request():
-    endpoints = [
-        "http://39.105.198.254:8088",
-        "http://39.105.198.254:8089",
-        "http://39.105.198.254:8090",
-    ]
+def send_request(endpoints):
     path = [
         "/",
         "/examples",
@@ -43,4 +39,20 @@ def send_request():
         time.sleep(1)
 
 
-send_request()
+def main():
+    parser = argparse.ArgumentParser(description="Send request.")
+    parser.add_argument(
+        "-e",
+        "--endpoints",
+        default=["tomcat1:8080", "tomcat2:8080", "tomcat3:8080"],
+        type=str,
+        nargs="+",
+        help="Specify the endpoints.")
+
+    args = parser.parse_args()
+    print "The args are %s" % args
+    send_request(args.endpoints)
+
+
+if __name__ == '__main__':
+    main()

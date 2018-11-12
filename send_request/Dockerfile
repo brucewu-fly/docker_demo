@@ -4,4 +4,4 @@ WORKDIR /usr/src/app
 
 COPY . .
 
-CMD [ "python", "./send_request.py" ]
+ENTRYPOINT ["python", "./send_request.py"]
