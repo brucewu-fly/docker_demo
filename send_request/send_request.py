@@ -8,7 +8,7 @@ import urllib2
 
 
 def send_request(endpoints):
-    path = [
+    paths = [
         "/",
         "/examples",
         "/examples/servlets/servlet/HelloWorldExample",
@@ -24,14 +24,62 @@ def send_request(endpoints):
         "/not/found3",
         "/not/found4",
     ]
+    user_agents = [
+        "Chrome",
+        "Chrome",
+        "Chrome",
+        "Chrome",
+        "Chrome",
+        "Chrome",
+        "Chrome",
+        "Chrome",
+        "Chrome",
+        "Chrome",
+        "Chrome",
+        "FireFox",
+        "FireFox",
+        "FireFox",
+        "Safari",
+        "Safari",
+        "Safari",
+        "IE",
+        "IE",
+        "IE",
+        "IE",
+        "IE",
+        "IE",
+        "IE",
+        "IE",
+        "IE",
+        "UC",
+        "UC",
+        "UC",
+        "UC",
+        "Dolphin",
+        "Dolphin",
+        "Dolphin",
+        "Dolphin",
+        "360",
+        "360",
+        "QQ",
+        "QQ",
+        "QQ",
+        "QQ",
+        "Sogou",
+        "Sogou",
+        "Sogou",
+        "Sogou",
+    ]
     while True:
         endpoints_r = random.randint(0, len(endpoints) - 1)
-        path_r = random.randint(0, len(path) - 1)
-        url = endpoints[endpoints_r] + path[path_r]
+        path_r = random.randint(0, len(paths) - 1)
+        url = endpoints[endpoints_r] + paths[path_r]
+        user_agent_r = random.randint(0, len(user_agents) - 1)
         if endpoints_r % 2 == 0:
             req = urllib2.Request(url=url)
         else:
             req = urllib2.Request(url=url, data="xxx")
+        req.add_header("User-Agent", user_agents[user_agent_r])
         try:
             urllib2.urlopen(req)
         except Exception as e:
