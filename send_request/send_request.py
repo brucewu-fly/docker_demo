@@ -70,16 +70,45 @@ def send_request(endpoints):
         "Sogou",
         "Sogou",
     ]
+    referers = [
+        "referer1",
+        "referer1",
+        "referer2",
+        "referer2",
+        "referer2",
+        "referer2",
+        "referer2",
+        "referer2",
+        "referer3",
+        "referer3",
+        "referer3",
+        "referer3",
+        "referer3",
+        "referer4",
+        "referer5",
+        "referer6",
+        "referer7",
+        "referer7",
+        "referer7",
+        "referer8",
+        "referer8",
+        "referer8",
+        "referer8",
+        "referer9",
+        "referer9",
+    ]
     while True:
         endpoints_r = random.randint(0, len(endpoints) - 1)
         path_r = random.randint(0, len(paths) - 1)
         url = endpoints[endpoints_r] + paths[path_r]
         user_agent_r = random.randint(0, len(user_agents) - 1)
+        referer_r = random.randint(0, len(referers) - 1)
         if endpoints_r % 2 == 0:
             req = urllib2.Request(url=url)
         else:
             req = urllib2.Request(url=url, data="xxx")
         req.add_header("User-Agent", user_agents[user_agent_r])
+        req.add_header("Referer", referers[referer_r])
         try:
             urllib2.urlopen(req)
         except Exception as e:
