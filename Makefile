@@ -7,7 +7,7 @@ docker-image:
 
 .PHONY: up
 up:
-	docker-compose -f docker-compose/docker-compose.yml up
+	docker-compose -f docker-compose/docker-compose.yml up -d
 
 .PHONY: stop
 stop:
