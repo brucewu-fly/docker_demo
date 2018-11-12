@@ -32,7 +32,10 @@ def send_request():
         endpoints_r = random.randint(0, len(endpoints) - 1)
         path_r = random.randint(0, len(path) - 1)
         url = endpoints[endpoints_r] + path[path_r]
-        req = urllib2.Request(url=url)
+        if endpoints_r % 2 == 0:
+            req = urllib2.Request(url=url)
+        else:
+            req = urllib2.Request(url=url, data="xxx")
         try:
             urllib2.urlopen(req)
         except Exception as e:
