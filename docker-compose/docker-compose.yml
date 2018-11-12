@@ -35,6 +35,7 @@ services:
     restart: on-failure
 
   send_request1:
+    container_name: send_request1
     image: docker_demo/send_request
     labels:
       - "app=send_request"
@@ -46,6 +47,7 @@ services:
       - tomcat3
 
   send_request2:
+    container_name: send_request2
     image: docker_demo/send_request
     labels:
       - "app=send_request"
@@ -57,6 +59,7 @@ services:
       - tomcat3
 
   send_request3:
+    container_name: send_request3
     image: docker_demo/send_request
     labels:
       - "app=send_request"
@@ -68,6 +71,7 @@ services:
       - tomcat3
 
   nginx:
+    container_name: nginx_app
     image: nginx:1.14
     ports:
       - "80:80"
