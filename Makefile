@@ -5,6 +5,14 @@ DOCKER_TAG?=latest
 docker-image:
 	docker build -t $(DOCKER_NAMESPACE)/send_request:${DOCKER_TAG} send_request/
 
-.PHONY: docker-run
-docker-run:
-	docker run -it --rm $(DOCKER_NAMESPACE)/send_request:${DOCKER_TAG}
+.PHONY: up
+up:
+	docker-compose -f docker-compose/docker-compose.yml up
+
+.PHONY: stop
+stop:
+	docker-compose -f docker-compose/docker-compose.yml stop
+
+.PHONY: rm
+rm:
+	docker-compose -f docker-compose/docker-compose.yml rm -f

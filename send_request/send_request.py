@@ -44,7 +44,7 @@ def main():
     parser.add_argument(
         "-e",
         "--endpoints",
-        default=["tomcat1:8080", "tomcat2:8080", "tomcat3:8080"],
+        default=["http://tomcat1:8080", "http://tomcat2:8080", "http://tomcat3:8080"],
         type=str,
         nargs="+",
         help="Specify the endpoints.")
