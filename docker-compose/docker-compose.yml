@@ -27,6 +27,8 @@ services:
       - "8090:8080"
     labels:
       - "app=tomcat"
+    volumes:
+      - $PWD/tomcat_conf:/usr/local/tomcat/conf
     restart: on-failure
 
   send_request1:
