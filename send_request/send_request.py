@@ -98,21 +98,22 @@ def send_request(endpoints):
         "referer9",
     ]
     while True:
-        endpoints_r = random.randint(0, len(endpoints) - 1)
-        path_r = random.randint(0, len(paths) - 1)
-        url = endpoints[endpoints_r] + paths[path_r]
-        user_agent_r = random.randint(0, len(user_agents) - 1)
-        referer_r = random.randint(0, len(referers) - 1)
-        if endpoints_r % 2 == 0:
-            req = urllib2.Request(url=url)
-        else:
-            req = urllib2.Request(url=url, data="xxx")
-        req.add_header("User-Agent", user_agents[user_agent_r])
-        req.add_header("Referer", referers[referer_r])
-        try:
-            urllib2.urlopen(req)
-        except Exception as e:
-            print e
+        for i in range(10):
+            endpoints_r = random.randint(0, len(endpoints) - 1)
+            path_r = random.randint(0, len(paths) - 1)
+            url = endpoints[endpoints_r] + paths[path_r]
+            user_agent_r = random.randint(0, len(user_agents) - 1)
+            referer_r = random.randint(0, len(referers) - 1)
+            if endpoints_r % 2 == 0:
+                req = urllib2.Request(url=url)
+            else:
+                req = urllib2.Request(url=url, data="xxx")
+            req.add_header("User-Agent", user_agents[user_agent_r])
+            req.add_header("Referer", referers[referer_r])
+            try:
+                urllib2.urlopen(req)
+            except Exception as e:
+                print e
         time.sleep(1)
 
 
